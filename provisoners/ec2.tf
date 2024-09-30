@@ -22,12 +22,12 @@ resource "aws_instance" "terraform" {
          "sudo systemctl start nginx",
     ]
   }
-  # provisioner "remote-exec" {
-  #       when    = destroy
-  #       inline = [
-  #           "sudo systemctl stop nginx",
-  #       ]
-  #   }
+  provisioner "remote-exec" {
+        when    = destroy
+        inline = [
+            "sudo systemctl stop nginx",
+        ]
+    }
 }
 resource "aws_security_group" "allow_sshh"{
     name = "allow-sshh"
